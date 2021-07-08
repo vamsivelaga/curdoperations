@@ -1,0 +1,33 @@
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-secondary" (click)="getEmpList()">Get Employees List</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 empList">
+            <ul>
+                {{getEmp | json}}
+                <li *ngFor="let empName of getEmp" (click)="empDetails(empName)">{{empName.employee_name}}</li>
+            </ul>
+        </div>
+        <div class="col-md-4 empDetails">
+            <h4>Employee Details(Same Page)</h4>
+            <div class="w-100">
+                Id: {{empDetailsVar.id}}
+            </div>
+            <div class="w-100">
+                Name: {{empDetailsVar.employee_name}}
+            </div>
+            <div class="w-100">
+                Salary: {{empDetailsVar.employee_salary}}
+            </div>
+            <div class="w-100">
+                Age: {{empDetailsVar.employee_age}}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <app-popup [details]="empDetailsVar"></app-popup>
+        </div>
+    </div>
+</div>
